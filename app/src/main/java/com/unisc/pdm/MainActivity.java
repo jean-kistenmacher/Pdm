@@ -11,14 +11,14 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private EditText editText;
+    private EditText editCelcius;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = findViewById(R.id.editText);
+            editCelcius = findViewById(R.id.editCelcius);
 
         Log.d("CICLO", "onCreate");
     }
@@ -62,15 +62,12 @@ public class MainActivity extends AppCompatActivity  {
         Log.d("CICLO", "onDestroy");
     }
 
-    int i = 0;
 
+    public void eventoDeClick(View view) {
 
-    public void click1(View view) {
-
-        String valorDigitado = editText.getText().toString();
+        String valorDigitado = editCelcius.getText().toString();
 
         if (!valorDigitado.isEmpty()) {
-
             Intent intent = new Intent(this, OutraActivity.class);
             intent.putExtra("celcius", valorDigitado);
             startActivity(intent);
