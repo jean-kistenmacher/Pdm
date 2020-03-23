@@ -9,68 +9,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
-    private EditText editCelcius;
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-            editCelcius = findViewById(R.id.editCelcius);
+    public void aula1Click(View view) {
+        startActivity(new Intent(this,Aula1Activity.class));
+    }
 
-        Log.d("CICLO", "onCreate");
+    public void aula2Click(View view) { startActivity(new Intent(this,Aula2Activity.class));  }
+
+    public void aula31Click(View view) {
+        startActivity(new Intent(this,Aula31Activity.class));
+    }
+
+    public void aula32Click(View view) {
+        startActivity(new Intent(this,Aula32Activity.class));
+    }
+
+    public void aula33Click(View view) {
+        startActivity(new Intent(this,Aula33Activity.class));
+    }
+
+    public void aula34Click(View view) { startActivity(new Intent(this,Aula34Activity.class));
     }
 
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("CICLO", "onStart");
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("CICLO", "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("CICLO", "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("CICLO", "onStop");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("CICLO", "onRestart");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("CICLO", "onDestroy");
-    }
-
-
-    public void eventoDeClick(View view) {
-
-        String valorDigitado = editCelcius.getText().toString();
-
-        if (!valorDigitado.isEmpty()) {
-            Intent intent = new Intent(this, OutraActivity.class);
-            intent.putExtra("celcius", valorDigitado);
-            startActivity(intent);
-        }
-    }
 }
