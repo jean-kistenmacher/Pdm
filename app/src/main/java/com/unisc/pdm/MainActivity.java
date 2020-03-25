@@ -24,19 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void aula2Click(View view) { startActivity(new Intent(this,Aula2Activity.class));  }
 
-    public void aula31Click(View view) {
-        startActivity(new Intent(this,Aula31Activity.class));
-    }
-
-    public void aula32Click(View view) {
-        startActivity(new Intent(this,Aula32Activity.class));
-    }
-
-    public void aula33Click(View view) {
-        startActivity(new Intent(this,Aula33Activity.class));
-    }
-
-    public void aula34Click(View view) { startActivity(new Intent(this,Aula34Activity.class));
+    public void aula3Click(View view) {
+        startActivity(new Intent(this,Aula3Activity.class));
     }
 
 
