@@ -3,6 +3,7 @@ package com.unisc.pdm;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,13 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class Aula5SlidesActivity extends AppCompatActivity {
 
     private Spinner categoria1, categoria2;
     String [] array_gasto = {"Água","Luz","Telefone","Outros"};
+
+    private ListView listView;
+    String [] gastos = {"Passagem","Alimentação","Estadia","Outros"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,7 @@ public class Aula5SlidesActivity extends AppCompatActivity {
         categoria1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Posicao=" + i, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Posicao=" + i, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -48,12 +55,24 @@ public class Aula5SlidesActivity extends AppCompatActivity {
         categoria2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"clicado: " + array_gasto[i], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"clicado: " + array_gasto[i], Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        listView = findViewById(R.id.listView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, Arrays.asList(gastos));
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String valor = gastos[i];
+                Toast.makeText(getApplicationContext(),"clicado: " + valor, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -70,7 +89,8 @@ public class Aula5SlidesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.itemNew:
-                Toast.makeText(this, "item new clicado", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Aula5SlidesActivity.this, Aula5ListActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.itemAdd:
                 Toast.makeText(this, "item add clicado", Toast.LENGTH_SHORT).show();

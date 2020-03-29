@@ -12,7 +12,7 @@
     <string name="taxa">Rate</string>
     <string name="calc">Calc</string>
     <string name="poupanca" translatable="false">Savings</string>
-    <string name="consumo"  translatable="false">Consumo Total R$</string>
+    <string name="consumo" translatable="false">Consumo Total R$</string>
     <string name="couvert" translatable="false">Couvert artistico R$</string>
     <string name="dividir" translatable="false">Dividir conta por</string>
     <string name="calcular" translatable="false">Calcular conta final</string>
