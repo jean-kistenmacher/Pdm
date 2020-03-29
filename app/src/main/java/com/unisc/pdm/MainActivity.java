@@ -2,6 +2,7 @@ package com.unisc.pdm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 
     @Override
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void aula3Click(View view) {
         startActivity(new Intent(this,Aula3Activity.class));
+    }
+
+    public void aula5Click(View view) {
+        startActivity(new Intent(this,Aula5Activity.class));
     }
 
 
