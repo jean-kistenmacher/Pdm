@@ -19,7 +19,8 @@
     <string name="taxa4" translatable="false">Taxa serviço (10%) R$</string>
     <string name="total" translatable="false">Conta Total R$</string>
     <string name="pessoa" translatable="false">Valor por pessoa R$</string>
-    <string name="cat_str">Categoria</string>
+    <string name="cat_str" translatable="false">Categoria</string>
+    <string name="contato" translatable="false"><u>Contato:</u></string>
 
     <string-array name="categoria_gasto">
         <item>Alimentação</item>

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unisc.pdm">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Aula5ListActivity"></activity>
+        <activity android:name=".Aula4Activity"/>
+        <activity android:name=".Aula5ListActivity" />
         <activity android:name=".Aula5SlidesActivity" />
         <activity android:name=".Aula5Activity" />
         <activity android:name=".Aula3Activity" />
