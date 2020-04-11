@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Aula4Activity"/>
+        <activity android:name=".Aula5Ex2ctivity"></activity>
+        <activity android:name=".Aula5Ex1ctivity" />
+        <activity android:name=".Aula4Activity" />
         <activity android:name=".Aula5ListActivity" />
         <activity android:name=".Aula5SlidesActivity" />
         <activity android:name=".Aula5Activity" />
