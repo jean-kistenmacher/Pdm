@@ -33,8 +33,14 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this,Aula4Activity.class));
     }
 
-    public void aula5Click(View view) {
-        startActivity(new Intent(this,Aula5Activity.class));
+    public void aula5Click(View view) { startActivity(new Intent(this,Aula5Activity.class)); }
+
+    public void aula61Click(View view) {
+        startActivity(new Intent(this,Aula61Activity.class));
+    }
+
+    public void aula62Click(View view) {
+        startActivity(new Intent(this,Aula62Activity.class));
     }
 
 

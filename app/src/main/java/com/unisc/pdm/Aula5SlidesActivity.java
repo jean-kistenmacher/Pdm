@@ -93,9 +93,13 @@ public class Aula5SlidesActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.itemAdd:
+                Intent t = new Intent(Aula5SlidesActivity.this, TestActivity.class);
+                startActivity(t);
                 Toast.makeText(this, "item add clicado", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.itemSave:
+                Intent j = new Intent(Aula5SlidesActivity.this, OSMActivity.class);
+                startActivity(j);
                 Toast.makeText(this, "item save clicado", Toast.LENGTH_SHORT).show();
                 return true;
         }

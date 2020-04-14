@@ -44,6 +44,28 @@
         android:onClick="aula5Click"
         android:text="Aula5" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_weight="1"
+            android:onClick="aula61Click"
+            android:text="Aula6-1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="aula62Click"
+            android:text="Aula6-2" />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>

@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Aula5Ex2ctivity"></activity>
+        <activity android:name=".Aula62Activity"></activity>
+        <activity android:name=".Aula61Activity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".OSMActivity" />
+        <activity android:name=".Aula5Ex2ctivity" />
         <activity android:name=".Aula5Ex1ctivity" />
         <activity android:name=".Aula4Activity" />
         <activity android:name=".Aula5ListActivity" />
