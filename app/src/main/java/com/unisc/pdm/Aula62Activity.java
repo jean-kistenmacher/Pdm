@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Aula62Activity extends AppCompatActivity {
 
     private Spinner spinner;
@@ -32,31 +34,21 @@ public class Aula62Activity extends AppCompatActivity {
 
         spinner.setAdapter(new MyAdapter(this, R.layout.spinner_item, languages));
 
-
     }
 
-    class MyAdapter extends ArrayAdapter {
 
-        public MyAdapter(Context context, int resorces, String[] array) {
-            super(context, resorces, array);
+     class MyAdapter extends ArrayAdapter {
+
+        public MyAdapter(Context ctx, int resources, String[] array) {
+            super(ctx, resources, array);
         }
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            return  getCustomView(position, convertView, parent);
-        }
-
-        @Override
-        public View getDropDownView(int position, View view, ViewGroup viewGroup) {
-             return  getCustomView(position, view, viewGroup);
-        }
-
-        private View getCustomView(int position, View view, ViewGroup viewGroup) {
+         private View getCustomView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.spinner_item,viewGroup,false);
+            View layout = inflater.inflate(R.layout.spinner_item, parent, false);
 
             TextView tv = layout.findViewById(R.id.conteudo);
+            tv.setTextColor(Color.BLUE);
             tv.setText(languages[position]);
 
             ImageView img = layout.findViewById(R.id.imageView);
@@ -65,10 +57,23 @@ public class Aula62Activity extends AppCompatActivity {
             if (position == 0) {
                 img.setVisibility(View.GONE);
                 tv.setTextSize(20f);
-                tv.setTextColor(Color.RED);
+                tv.setTextColor(Color.BLACK);
             }
-            return layout;
-        }
 
-    }
+            return layout;
+         }
+
+         @NonNull
+         @Override
+         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+             return getCustomView(position, convertView, parent);
+         }
+
+         @Override
+         public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+             return getCustomView(position, convertView, parent);
+         }
+
+
+     }
 }

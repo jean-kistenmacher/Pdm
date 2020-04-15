@@ -17,7 +17,7 @@
         android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:textColor="#000"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:text="C# language"
         android:layout_height="wrap_content"/>
 
