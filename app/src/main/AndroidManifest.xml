@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Aula62Activity"></activity>
+        <activity android:name=".Aula6Ex1Activity"></activity>
+        <activity android:name=".Aula6Activity" />
+        <activity android:name=".Aula62Activity" />
         <activity android:name=".Aula61Activity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".OSMActivity" />

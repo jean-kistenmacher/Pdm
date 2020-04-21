@@ -3,52 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".Aula6Activity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="aula61Click"
+        android:text="ListView customizado" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:onClick="aula1Click"
-        android:text="Aula1" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:onClick="aula2Click"
-        android:text="Aula2" />
+        android:onClick="aula62Click"
+        android:text="Spinner customizado" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:onClick="aula3Click"
-        android:text="Aula3" />
+        android:onClick="aula6Ex1Click"
+        android:text="Exercício 1" />
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:onClick="aula4Click"
-        android:text="Aula4" />
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        android:text="Exercício 2:" />
 
-    <Button
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:onClick="aula5Click"
-        android:text="Aula5" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="aula6Click"
-        android:text="Aula6" />
-
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
