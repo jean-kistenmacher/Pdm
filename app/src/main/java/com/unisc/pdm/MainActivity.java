@@ -39,6 +39,12 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this,Aula6Activity.class));
     }
 
+    public void aula7Click(View view) {
+        startActivity(new Intent(this,Aula7Activity.class));
+    }
 
+    public void aula8Click(View view) {
+        startActivity(new Intent(this,Aula8Activity.class));
+    }
 
 }

@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:onClick="aula1Click"
-        android:text="Aula1" />
+        android:text="Aula1 - Introdução" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:onClick="aula2Click"
-        android:text="Aula2" />
+        android:text="Aula2 - Activity/View-groups" />
 
 
     <Button
@@ -28,27 +28,42 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:onClick="aula3Click"
-        android:text="Aula3" />
+        android:text="Aula3 - Layouts" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:onClick="aula4Click"
-        android:text="Aula4" />
+        android:text="Aula4 - Intents" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:onClick="aula5Click"
-        android:text="Aula5" />
+        android:text="Aula5 - Views coleção de dados" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:onClick="aula6Click"
-        android:text="Aula6" />
+        android:text="Aula6 - Adaptadores" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="aula7Click"
+        android:text="Aula7 - REST" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="aula8Click"
+        android:text="Aula8 - BD" />
 
 
 </LinearLayout>
