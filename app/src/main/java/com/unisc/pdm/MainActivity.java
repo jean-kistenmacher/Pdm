@@ -47,4 +47,7 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this,Aula8Activity.class));
     }
 
+    public void aula9Click(View view) { startActivity(new Intent(this,Aula9Activity.class));
+    }
+
 }
