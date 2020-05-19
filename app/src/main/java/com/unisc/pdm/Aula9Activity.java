@@ -2,13 +2,16 @@ package com.unisc.pdm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Aula9Activity extends AppCompatActivity implements SensorEventListener {
@@ -16,6 +19,7 @@ public class Aula9Activity extends AppCompatActivity implements SensorEventListe
     private TextView a, b, c, d, e, f, g, h, i;
     SensorManager smn;
     Sensor sensor;
+    LinearLayout box;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class Aula9Activity extends AppCompatActivity implements SensorEventListe
         g = findViewById(R.id.a7);
         h = findViewById(R.id.a8);
         i = findViewById(R.id.a9);
+        box = findViewById(R.id.box);
 
         smn = (SensorManager) getSystemService(SENSOR_SERVICE);
         smn.registerListener(this,smn.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
@@ -60,6 +65,28 @@ public class Aula9Activity extends AppCompatActivity implements SensorEventListe
             g.setText("Orient X = " + sensorEvent.values[0]);
             h.setText("Orient Y = " + sensorEvent.values[1]);
             i.setText("Orient Z = " + sensorEvent.values[2]);
+
+            float x = sensorEvent.values[0];
+            float z = sensorEvent.values[2];
+
+            if ((z > 1.2 && z < 1.8) || (z < -1.2 && z > -1.8)) {
+                box.setBackgroundColor(Color.GREEN); //landscape
+            }
+            else {
+                if ((z > -0.8 && z < 0.2) || (z < -2.84 && z > -3.44)) {
+                    box.setBackgroundColor(Color.BLUE); //portrait
+                }
+            }
+
+            if (x > 1.27 && x < 1.87)  {
+                //finish(); fecha a activity
+                System.exit(0);
+            }
+            else {
+                if (x < -1.27 && x > -1.87) {
+                    box.setBackgroundColor(Color.RED);
+                }
+            }
         }
     }
 
