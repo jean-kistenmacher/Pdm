@@ -41,7 +41,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:onClick="voltarClick"
-            android:text="LOGOUT"/>
+            android:text="Voltar"/>
 
     <Button
         android:layout_width="match_parent"
