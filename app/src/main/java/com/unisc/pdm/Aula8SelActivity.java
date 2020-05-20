@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +23,7 @@ import java.util.Map;
 public class Aula8SelActivity extends AppCompatActivity {
 
     private ListView listView;
-    private EditText etAno;
+    private EditText etAno, etNome;
     List<Map<String, Object>> lista;
     private DatabaseHelper helper;
 
@@ -32,6 +34,7 @@ public class Aula8SelActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
         etAno= findViewById(R.id.etAno);
+        etNome= findViewById(R.id.etNome);
         helper = new DatabaseHelper(this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,17 +54,19 @@ public class Aula8SelActivity extends AppCompatActivity {
         });
     }
 
-    public void searchClick(View view) {
-        String query = "";
-        if (etAno.getText().toString().isEmpty()) {
-            query = "SELECT * FROM carro";
-        }
-        else {
-            query = "SELECT * FROM carro WHERE ano = " +  etAno.getText().toString();
-        }
-        lista = new ArrayList<>();
+    public void searchClick2(View view) {
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor c = db.rawQuery(query, null);
+        SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        builder.setTables("carro");
+        String [] projection = new String[] {"*"};
+        String selection = "modelo=?";
+        String [] selArgs = new String[]{etNome.getText().toString()};
+        Cursor c = builder.query(db, projection, selection,selArgs,null,null,"ano DESC");
+        loadList(c);
+    }
+
+    private void loadList(Cursor c) {
+        lista = new ArrayList<>();
         c.moveToFirst();
         for (int i = 0; i < c.getCount(); i++){
             Map<String, Object> mapa = new HashMap<>();
@@ -81,7 +86,19 @@ public class Aula8SelActivity extends AppCompatActivity {
                 new String [] {"id","modelo","ano","valor"},
                 new int[] {R.id.tvId, R.id.tvModelo,R.id.tvAno,R.id.tvValor,});
         listView.setAdapter(adapter);
+    }
 
+    public void searchClick(View view) {
+        String query = "";
+        if (etAno.getText().toString().isEmpty()) {
+            query = "SELECT * FROM carro";
+        }
+        else {
+            query = "SELECT * FROM carro WHERE ano = " +  etAno.getText().toString();
+        }
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+        loadList(c);
     }
 
     public void addClick(View view) {

@@ -13,4 +13,10 @@
         android:text="Banco exemplo"
         android:onClick="selClick"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exercicio 2"
+        android:onClick="ex2Click"/>
+
 </LinearLayout>

@@ -17,4 +17,8 @@ public class Aula8Activity extends AppCompatActivity {
     public void selClick(View view) {
         startActivity(new Intent(this,Aula8SelActivity.class));
     }
+
+    public void ex2Click(View view) {
+        startActivity(new Intent(this,Aula8ExActivity.class));
+    }
 }
