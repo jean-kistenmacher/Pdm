@@ -8,6 +8,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Aula8ExActivity"></activity>
+        <activity android:name=".TrabalhoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Aula8ExActivity" />
         <activity android:name=".Aula9Map" />
         <activity android:name=".Aula9GpsActivity" />
         <activity android:name=".Aula9Activity" />
@@ -49,8 +55,7 @@
         <activity android:name=".Aula1Activity" />
         <activity android:name=".OutraActivity" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
