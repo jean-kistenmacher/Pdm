@@ -30,9 +30,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.List;
 
+//https://stackoverflow.com/questions/48642695/capture-image-using-dynamic-co-ordinates-through-the-camera
 public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback {
 
     Camera camera;
