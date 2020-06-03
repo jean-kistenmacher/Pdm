@@ -10,7 +10,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
@@ -18,10 +24,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrabalhoActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".Aula11Activity"></activity>
+        <activity
+            android:name=".TrabalhoActivity"
+            android:screenOrientation="fullSensor" />
         <activity android:name=".Aula8ExActivity" />
         <activity android:name=".Aula9Map" />
         <activity android:name=".Aula9GpsActivity" />
@@ -54,14 +63,22 @@
         <activity android:name=".Aula31Activity" />
         <activity android:name=".Aula1Activity" />
         <activity android:name=".OutraActivity" />
-        <activity
-            android:name=".MainActivity" >
+        <activity android:name=".WeatherActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".NotificacaoService" />
+        <receiver android:name=".Broadcast">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

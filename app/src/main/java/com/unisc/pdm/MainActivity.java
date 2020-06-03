@@ -58,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void aula9Click(View view) { startActivity(new Intent(this,Aula9Activity.class));  }
 
+    public void aula10Click(View view) {
+        PackageManager pm = getPackageManager();
+        Intent intent = pm.getLaunchIntentForPackage("com.ghelfer.appjni");
+        if (intent != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void aula11Click(View view) { startActivity(new Intent(this,Aula11Activity.class)); }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
