@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void aula11Click(View view) { startActivity(new Intent(this,Aula11Activity.class)); }
 
+    public void aula12Click(View view) { startActivity(new Intent(this,Aula12Activity.class)); }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -117,5 +120,6 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
         toast.show();
     }
+
 
 }

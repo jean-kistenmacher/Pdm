@@ -90,6 +90,13 @@
             android:onClick="aula11Click"
             android:text="Aula11 - Notificações" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="aula12Click"
+            android:text="Aula12 - Gráficos" />
+
 
     </LinearLayout>
 
