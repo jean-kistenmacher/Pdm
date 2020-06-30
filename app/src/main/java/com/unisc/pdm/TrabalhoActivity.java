@@ -205,10 +205,20 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     public Bitmap CenterCrop(Bitmap source, int newHeight, int newWidth) {
         int sourceWidth = source.getWidth();
         int sourceHeight = source.getHeight();
-        float left = (newWidth - sourceWidth) / 2f;
-        float top = (newHeight - sourceHeight) / 2f;
-        RectF targetRect = new RectF(left, top, left + sourceWidth, top + sourceHeight);
-        txtDebug.setText(left + "," + top + "," + (left + sourceWidth) + "," + (top + sourceHeight));
+
+        float roiX = X;
+        float roiY = Y;
+//        float left = (newWidth - sourceWidth) / 2f;
+//        float top = (newHeight - sourceHeight) / 2f;
+//        RectF targetRect = new RectF(left, top, left + sourceWidth, top + sourceHeight);
+//        txtDebug.setText(left + "," + top + "," + (left + sourceWidth) + "," + (top + sourceHeight));
+
+        float left = X;
+        float top = Y;
+        float right = X + newWidth;
+        float bottom = Y + newHeight;
+        RectF targetRect = new RectF(left, top, right, bottom);
+
         Bitmap dest = Bitmap.createBitmap(newWidth, newHeight, source.getConfig());
         Canvas canvas = new Canvas(dest);
         canvas.drawBitmap(source, null, targetRect, null);
