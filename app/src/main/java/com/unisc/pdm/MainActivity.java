@@ -68,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void aula11Click(View view) { startActivity(new Intent(this,Aula11Activity.class)); }
 
-    public void aula12Click(View view) { startActivity(new Intent(this,Aula12Activity.class)); }
+//    public void aula12Click(View view) { startActivity(new Intent(this,Aula12Activity.class)); }
 
+    public void trabalhoClick(View view){startActivity(new Intent(this,TrabalhoActivity.class));}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

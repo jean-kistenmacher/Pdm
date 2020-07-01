@@ -1,9 +1,10 @@
 package com.unisc.pdm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -16,7 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.Camera.*;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.Surface;
@@ -30,6 +30,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.List;
 
 //https://stackoverflow.com/questions/48642695/capture-image-using-dynamic-co-ordinates-through-the-camera
@@ -41,6 +43,8 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     SurfaceHolder surfaceHolder;
     PictureCallback jpegCallback;
     Button btnCapture, btnSave;
+    private DatabaseTrabalho dbTrabalho;
+    List<Imagem> listaInfo = new ArrayList<>();
 
     int angle = 0, count = 0, MAX = 5, roi = 128;
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -51,7 +55,7 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     ImageView photoImage = null, imageRoi = null;
     TextView txtR, txtG, txtB, txtCount, txtDebug, txtLastSample;
     Boolean autoscale = true, reverse = false;
-    float X = 0, Y = 0;
+    float X = 0, Y = 0; //X = 165, Y = 203;
     EditText txtSample;
     String[] nome;
     String[][] data;
@@ -66,6 +70,7 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         imageRoi = findViewById(R.id.imageRoi);
         imageRoi.getLayoutParams().height = (int) (Double.parseDouble(String.valueOf(roi)) * 1.16);
         imageRoi.getLayoutParams().width = (int) (Double.parseDouble(String.valueOf(roi)) * 1.16);
+        dbTrabalho = new DatabaseTrabalho(this);
 
         txtR = findViewById(R.id.txtR);
         txtG = findViewById(R.id.txtG);
@@ -103,24 +108,29 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         btnCapture.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (txtSample.getText().toString().equals("") == false)
-                    if (checkName(txtSample.getText().toString()) == false)
+                if (txtSample.getText().toString().equals("") == false) {
+                    if (checkName(txtSample.getText().toString()) == false) {
                         camera.takePicture(null, null, jpegCallback);
-                    else
+                        Imagem informacao = new Imagem();
+                        informacao.setNome(txtSample.getText().toString());
+                        System.out.println("++++++++++++++++++ " + txtR.getText().toString());
+                        informacao.setR(txtR.getText().toString());
+                        informacao.setG(txtG.getText().toString());
+                        informacao.setB(txtB.getText().toString());
+                        listaInfo.add(informacao);
+                    } else
                         MessageBox("Please inform different name!");
-                else
+                }else
                     MessageBox("Please inform sample name!");
             }
         });
 
         btnSave = findViewById(R.id.btnSave);
         btnSave.setEnabled(false);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ///abrir activity nova
-            }
-        });
+
+
+
+
 
         //modificar
         imageRoi.setOnTouchListener(new View.OnTouchListener() {
@@ -205,20 +215,10 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     public Bitmap CenterCrop(Bitmap source, int newHeight, int newWidth) {
         int sourceWidth = source.getWidth();
         int sourceHeight = source.getHeight();
-
-        float roiX = X;
-        float roiY = Y;
-//        float left = (newWidth - sourceWidth) / 2f;
-//        float top = (newHeight - sourceHeight) / 2f;
-//        RectF targetRect = new RectF(left, top, left + sourceWidth, top + sourceHeight);
-//        txtDebug.setText(left + "," + top + "," + (left + sourceWidth) + "," + (top + sourceHeight));
-
-        float left = X;
-        float top = Y;
-        float right = X + newWidth;
-        float bottom = Y + newHeight;
-        RectF targetRect = new RectF(left, top, right, bottom);
-
+        float left = (newWidth - sourceWidth) / 2f;
+        float top = (newHeight - sourceHeight) / 2f;
+        RectF targetRect = new RectF(left, top, left + sourceWidth, top + sourceHeight);
+        txtDebug.setText(left + "," + top + "," + (left + sourceWidth) + "," + (top + sourceHeight));
         Bitmap dest = Bitmap.createBitmap(newWidth, newHeight, source.getConfig());
         Canvas canvas = new Canvas(dest);
         canvas.drawBitmap(source, null, targetRect, null);
@@ -252,14 +252,15 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         }
 
         //salvar banco de dados
-
-        txtR.setText("R :"
-                + (redTotal / (bmp.getHeight() * bmp.getWidth())));
-        txtG.setText("G :"
-                + (greenTotal
-                / (bmp.getHeight() * bmp.getWidth())));
-        txtB.setText("B :"
-                + (blueTotal / (bmp.getHeight() * bmp.getWidth())));
+        btnSave.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarBancoDados(v);
+            }
+        });
+        txtR.setText(Float.toString(redTotal / (bmp.getHeight() * bmp.getWidth())));
+        txtG.setText(Float.toString(greenTotal/ (bmp.getHeight() * bmp.getWidth())));
+        txtB.setText(Float.toString(blueTotal / (bmp.getHeight() * bmp.getWidth())));
 
     }
 
@@ -329,6 +330,27 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
                 hideSoftKeyboard(TrabalhoActivity.this);
             }
         });
+    }
+
+    public void salvarBancoDados(View view) {
+        SQLiteDatabase db = dbTrabalho.getWritableDatabase();
+        db.delete("amostra",null,null);
+        for (int i = 0; i < listaInfo.size(); i++) {
+            ContentValues c = new ContentValues();
+            c.put("red",listaInfo.get(i).getR());
+            c.put("green",listaInfo.get(i).getG());
+            c.put("blue",listaInfo.get(i).getB());
+            c.put("nm_amostra",listaInfo.get(i).getNome());
+
+            long res = db.insert("amostra", null, c);
+            if(res != -1){
+                Toast.makeText(this,"Salvo com sucesso",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this,"Erro ao salvar",Toast.LENGTH_SHORT).show();
+            }
+        }
+        Intent intent = new Intent(this, ListaAmostraTrabalho.class);
+        startActivity(intent);
     }
 
     private void start_camera() {
@@ -426,5 +448,49 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         camera.stopPreview();
         camera.release();
         camera = null;
+    }
+
+
+    protected void  onDestroy() {
+        dbTrabalho.close();
+        super.onDestroy();
+    }
+    class Imagem {
+        String nome;
+        String r;
+        String g;
+        String b;
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public String getR() {
+            return r;
+        }
+
+        public void setR(String r) {
+            this.r = r;
+        }
+
+        public String getG() {
+            return g;
+        }
+
+        public void setG(String g) {
+            this.g = g;
+        }
+
+        public String getB() {
+            return b;
+        }
+
+        public void setB(String b) {
+            this.b = b;
+        }
     }
 }

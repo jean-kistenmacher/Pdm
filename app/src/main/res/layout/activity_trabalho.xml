@@ -15,6 +15,7 @@
         android:layout_marginBottom="70dp" />
 
 
+
     <ImageView
         android:id="@+id/imageRoi"
         android:layout_width="64px"
@@ -147,6 +148,7 @@
                 android:layout_gravity="bottom"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
+                android:onClick="salvar"
                 android:background="#CCCCCC"
                 android:text="Save" />
 

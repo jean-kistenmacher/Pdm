@@ -3,12 +3,10 @@ package com.unisc.pdm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Aula8AddActivity extends AppCompatActivity {

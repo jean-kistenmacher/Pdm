@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mobile Devices</string>
+    <string name="botao1">To Fahrenheit</string>
+    <string name="aula3poup">Savings</string>
+    <string name="valorInicial">Initial Value</string>
+    <string name="hintValorEm">Value in R$. Ex: 1300.00</string>
+    <string name="aplicacaoMensal">Monthly application:</string>
+    <string name="taxa">Fee</string>
+    <string name="hintEmMeses">In months</string>
+    <string name="tempoAplicacao">Time of application</string>
+    <string name="btnCalcular">Calculate</string>
+    <string name="aula3card">Card</string>
+    <string name="aula3transito">"Traffic"</string>
+    <string name="lbl11de28">Question 11 of 28</string>
+    <string name="lblPerguntaTransito">What is the meaning of this plaque?</string>
+    <string name="aula3balaio">Bag</string>
+    <string name="aula7weather">Lesson 7</string>
+</resources>
