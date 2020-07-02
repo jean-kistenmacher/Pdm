@@ -43,7 +43,7 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     SurfaceHolder surfaceHolder;
     PictureCallback jpegCallback;
     Button btnCapture, btnSave;
-    private DatabaseTrabalho dbTrabalho;
+    private DatabaseTrabalho helper;
     List<Imagem> listaInfo = new ArrayList<>();
 
     int angle = 0, count = 0, MAX = 5, roi = 128;
@@ -70,7 +70,6 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         imageRoi = findViewById(R.id.imageRoi);
         imageRoi.getLayoutParams().height = (int) (Double.parseDouble(String.valueOf(roi)) * 1.16);
         imageRoi.getLayoutParams().width = (int) (Double.parseDouble(String.valueOf(roi)) * 1.16);
-        dbTrabalho = new DatabaseTrabalho(this);
 
         txtR = findViewById(R.id.txtR);
         txtG = findViewById(R.id.txtG);
@@ -129,7 +128,7 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         btnSave.setEnabled(false);
 
 
-
+        helper = new DatabaseTrabalho(this);
 
 
         //modificar
@@ -333,21 +332,15 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
     }
 
     public void salvarBancoDados(View view) {
-        SQLiteDatabase db = dbTrabalho.getWritableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase();
         db.delete("amostra",null,null);
         for (int i = 0; i < listaInfo.size(); i++) {
             ContentValues c = new ContentValues();
             c.put("red",listaInfo.get(i).getR());
             c.put("green",listaInfo.get(i).getG());
             c.put("blue",listaInfo.get(i).getB());
-            c.put("nm_amostra",listaInfo.get(i).getNome());
-
+            c.put("name",listaInfo.get(i).getNome());
             long res = db.insert("amostra", null, c);
-            if(res != -1){
-                Toast.makeText(this,"Salvo com sucesso",Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this,"Erro ao salvar",Toast.LENGTH_SHORT).show();
-            }
         }
         Intent intent = new Intent(this, ListaAmostraTrabalho.class);
         startActivity(intent);
@@ -452,7 +445,7 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
 
 
     protected void  onDestroy() {
-        dbTrabalho.close();
+        helper.close();
         super.onDestroy();
     }
     class Imagem {

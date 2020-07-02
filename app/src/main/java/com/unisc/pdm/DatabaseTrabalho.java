@@ -9,18 +9,19 @@ import androidx.annotation.Nullable;
 
 public class DatabaseTrabalho extends SQLiteOpenHelper {
     public DatabaseTrabalho(@Nullable Context context) {
-        super(context, "database.db", null, 1);
+        super(context, "trabalho.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE amostra (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "red TEXT NOT NULL," +
-                "green TEXT NOT NULL, " +
-                "blue TEXT NOT NULL, " +
-                "nm_amostra TEXT NOT NULL); ";
-        db.execSQL(sql);
+
+        String sql = "CREATE TABLE amostra "
+                + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " red TEXT NOT NULL," +
+                " green TEXT NOT NULL, " +
+                " blue TEXT NOT NULL, " +
+                " name TEXT NOT NULL  ); ";
+        db.execSQL( sql );
     }
 
     @Override

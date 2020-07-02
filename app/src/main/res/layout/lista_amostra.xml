@@ -6,22 +6,35 @@
 
     <TextView
         android:id="@+id/tvNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/tvR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/tvG"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/tvB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="92dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 </LinearLayout>
