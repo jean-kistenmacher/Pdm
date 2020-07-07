@@ -110,13 +110,6 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
                 if (txtSample.getText().toString().equals("") == false) {
                     if (checkName(txtSample.getText().toString()) == false) {
                         camera.takePicture(null, null, jpegCallback);
-                        Imagem informacao = new Imagem();
-                        informacao.setNome(txtSample.getText().toString());
-                        System.out.println("++++++++++++++++++ " + txtR.getText().toString());
-                        informacao.setR(txtR.getText().toString());
-                        informacao.setG(txtG.getText().toString());
-                        informacao.setB(txtB.getText().toString());
-                        listaInfo.add(informacao);
                     } else
                         MessageBox("Please inform different name!");
                 }else
@@ -251,15 +244,22 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         }
 
         //salvar banco de dados
-        btnSave.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                salvarBancoDados(v);
-            }
-        });
+//        btnSave.setOnClickListener(new Button.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                salvarBancoDados(v);
+//            }
+//        });
         txtR.setText(Float.toString(redTotal / (bmp.getHeight() * bmp.getWidth())));
         txtG.setText(Float.toString(greenTotal/ (bmp.getHeight() * bmp.getWidth())));
         txtB.setText(Float.toString(blueTotal / (bmp.getHeight() * bmp.getWidth())));
+
+        Imagem informacao = new Imagem();
+        informacao.setNome(txtSample.getText().toString());
+        informacao.setR(txtR.getText().toString());
+        informacao.setG(txtG.getText().toString());
+        informacao.setB(txtB.getText().toString());
+        listaInfo.add(informacao);
 
     }
 
@@ -269,6 +269,13 @@ public class TrabalhoActivity extends Activity implements SurfaceHolder.Callback
         surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+        btnSave.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarBancoDados(v);
+            }
+        });
 
         jpegCallback = new PictureCallback() {
             @Override
